@@ -34,11 +34,9 @@ const upload = multer({
 });
 
 router.post('/', upload.single('image'), (req, res) => {
-   if(req.file) {
+  
     res.send(`/${req.file.destination}/${req.file.filename}`);
-   }else{
-     throw new Error('No file uploaded!');
-   }
+  
   })
 
 export default router;
