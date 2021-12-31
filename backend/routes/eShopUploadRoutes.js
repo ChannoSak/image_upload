@@ -8,7 +8,9 @@ const storage = multer.diskStorage({
   cb(null, 'uploads/schools');
  },  
  filename(req, file, cb) {
-  cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+
+  // cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+  cb(null, `${file.originalname}`);
  },
 });
 
@@ -32,8 +34,11 @@ const upload = multer({
 });
 
 router.post('/', upload.single('image'), (req, res) => {
-   console.log(req.file);
+   if(req.file) {
     res.send(`/${req.file.destination}/${req.file.filename}`);
+   }else{
+     throw new Error('No file uploaded!');
+   }
   })
 
 export default router;
