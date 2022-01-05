@@ -9,4 +9,5 @@
 # starting project
     npm run server  //to run backend
     npm run client  //to run frontend
-    npm run dev     //to run both backend/frontend
+    npm run dev     //to run both backend/
+    dsd
