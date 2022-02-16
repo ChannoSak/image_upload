@@ -7,6 +7,7 @@ import cors from 'cors';
 
 // import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import eShopUploads from './routes/eShopUploadRoutes.js';
+import cmsRoutes from './routes/cmsUploadRoute.js';
 
 const __dirname = path.resolve();
 dotenv.config();
@@ -16,25 +17,32 @@ app.use(express.json());
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
-   }
-   
+}
+
 app.use('/api/school/upload', eShopUploads);
+app.use('/api/cms/upload', cmsRoutes);
 
 app.use(
- '/api/uploads/schools',
- express.static(path.join(__dirname, '/uploads/schools'))
+    '/api/uploads/cms',
+    express.static(path.join(__dirname, '/uploads/cms'))
+);
+
+
+app.use(
+    '/api/uploads/schools',
+    express.static(path.join(__dirname, '/uploads/schools'))
 );
 
 if (process.env.NODE_ENV === 'production') {
- app.use(express.static(path.join(__dirname, '/frontend/build')));
+    app.use(express.static(path.join(__dirname, '/frontend/build')));
 
- app.get('*', (req, res) =>
-  res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
- );
+    app.get('*', (req, res) =>
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+    );
 } else {
- app.get('/', (req, res) => {
-  res.send('API is running....');
- });
+    app.get('/', (req, res) => {
+        res.send('API is running....');
+    });
 }
 
 // app.use(notFound);
@@ -43,8 +51,8 @@ if (process.env.NODE_ENV === 'production') {
 const PORT = process.env.PORT || 2100;
 
 app.listen(
- PORT,
- console.log(
-  `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
- )
+    PORT,
+    console.log(
+        `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+    )
 );
