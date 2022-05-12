@@ -8,6 +8,7 @@ import cors from 'cors';
 // import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import eShopUploads from './routes/eShopUploadRoutes.js';
 import cmsRoutes from './routes/cmsUploadRoute.js';
+import tvUploads from './routes/tvUploadRoute.js';
 
 const __dirname = path.resolve();
 dotenv.config();
@@ -20,18 +21,23 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use('/api/school/upload', eShopUploads);
-app.use('/api/cms/upload', cmsRoutes);
+app.use('/api/cms/upload', cmsRoutes)
+app.use('/api/tv/upload', tvUploads)
 
-app.use(
-    '/api/uploads/cms',
-    express.static(path.join(__dirname, '/uploads/cms'))
-);
+// app.use(
+//     '/api/uploads/cms',
+//     express.static(path.join(__dirname, '/uploads/cms'))
+// );
 
 
 app.use(
     '/api/uploads/schools',
     express.static(path.join(__dirname, '/uploads/schools'))
 );
+app.use(
+    '/api/uploads/tv',
+    express.static(path.join(__dirname, '/uploads/tv'))
+)
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '/frontend/build')));
