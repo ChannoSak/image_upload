@@ -7,7 +7,7 @@ import cors from 'cors';
 
 // import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import eShopUploads from './routes/eShopUploadRoutes.js';
-import cmsRoutes from './routes/cmsUploadRoute.js';
+// import cmsRoutes from './routes/cmsUploadRoute.js';
 import tvUploads from './routes/tvUploadRoute.js';
 
 const __dirname = path.resolve();
@@ -24,7 +24,7 @@ app.use('/api/school/upload', eShopUploads);
 // app.use('/api/cms/upload', cmsRoutes)
 app.use('/api/tv/upload', tvUploads)
 
-
+//Hello Test
 
 app.use(
     '/api/uploads/schools',
