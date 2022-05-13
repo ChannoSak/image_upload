@@ -21,13 +21,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use('/api/school/upload', eShopUploads);
-app.use('/api/cms/upload', cmsRoutes)
+// app.use('/api/cms/upload', cmsRoutes)
 app.use('/api/tv/upload', tvUploads)
 
-// app.use(
-//     '/api/uploads/cms',
-//     express.static(path.join(__dirname, '/uploads/cms'))
-// );
 
 
 app.use(
