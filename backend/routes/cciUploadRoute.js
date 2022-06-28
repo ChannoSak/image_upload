@@ -5,7 +5,7 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
  destination(req, file, cb) {
-  cb(null, 'uploads/schools');
+  cb(null, 'uploads/cci-image');
  },  
  filename(req, file, cb) {
 
